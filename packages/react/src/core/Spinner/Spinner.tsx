@@ -16,6 +16,8 @@ const colorClasses = {
   primary: 'text-primary',
   success: 'text-success',
   danger: 'text-danger',
+  warning: 'text-warning',
+  neutral: 'text-neutral-500',
 }
 
 export function Spinner({ size = 'md', color = 'primary', className, ...props }: SpinnerProps) {

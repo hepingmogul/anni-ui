@@ -1,4 +1,4 @@
-import { Space, Tabs } from '../index'
+import { Tabs } from '../index'
 
 export default function TabsPage() {
   return (
