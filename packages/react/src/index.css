@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* primary (blue) */
+  --color-primary-light:    #f5f3ff;  /* violet-50 */
+  --color-primary:          #7c3aed;  /* violet-600 */
+  --color-primary-hover:    #6d28d9;  /* violet-700 */
+  --color-primary-active:   #5b21b6;  /* violet-800 */
+  --color-primary-disabled: #c4b5fd;  /* violet-300 */
+  --color-primary-ring:     #8b5cf6;  /* violet-500 */
+  --color-primary-fg:       #ffffff;
+
+  /* danger (red) */
+  --color-danger-light:    #fef2f2;   /* red-50 */
+  --color-danger:          #dc2626;   /* red-600 */
+  --color-danger-hover:    #b91c1c;   /* red-700 */
+  --color-danger-active:   #991b1b;   /* red-800 */
+  --color-danger-disabled: #fca5a5;   /* red-300 */
+  --color-danger-fg:       #ffffff;
+
+  /* success (green) */
+  --color-success-light: #f0fdf4;     /* green-50 */
+  --color-success:       #16a34a;     /* green-600 */
+  --color-success-fg:    #166534;     /* green-800 */
+
+  /* warning (yellow) */
+  --color-warning-light: #fefce8;     /* yellow-50 */
+  --color-warning:       #ca8a04;     /* yellow-600 */
+  --color-warning-fg:    #854d0e;     /* yellow-800 */
+
+  /* info (blue) */
+  --color-info-light: #eff6ff;        /* blue-50 */
+  --color-info:       #3b82f6;        /* blue-500 */
+  --color-info-fg:    #1e40af;        /* blue-800 */
+
+  /* neutral (gray) */
+  --color-neutral-50:  #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+  --color-neutral-fg:  #ffffff;
+
+  /* surface */
+  --color-surface: #ffffff;
+}
+
+.dark {
+  /* primary */
+  --color-primary-light:    #2e1065;  /* violet-950 */
+  --color-primary:          #8b5cf6;  /* violet-500 */
+  --color-primary-hover:    #7c3aed;  /* violet-600 */
+  --color-primary-active:   #6d28d9;  /* violet-700 */
+  --color-primary-disabled: #4c1d95;  /* violet-900 */
+  --color-primary-ring:     #a78bfa;  /* violet-400 */
+  --color-primary-fg:       #ffffff;
+
+  /* danger */
+  --color-danger-light:    #450a0a;   /* red-950 */
+  --color-danger:          #ef4444;   /* red-500 */
+  --color-danger-hover:    #dc2626;   /* red-600 */
+  --color-danger-active:   #b91c1c;   /* red-700 */
+  --color-danger-disabled: #7f1d1d;   /* red-900 */
+  --color-danger-fg:       #ffffff;
+
+  /* success */
+  --color-success-light: #052e16;     /* green-950 */
+  --color-success:       #22c55e;     /* green-500 */
+  --color-success-fg:    #bbf7d0;     /* green-200 */
+
+  /* warning */
+  --color-warning-light: #1c1917;     /* stone-950 */
+  --color-warning:       #eab308;     /* yellow-500 */
+  --color-warning-fg:    #fef08a;     /* yellow-200 */
+
+  /* info */
+  --color-info-light: #172554;        /* blue-950 */
+  --color-info:       #60a5fa;        /* blue-400 */
+  --color-info-fg:    #bfdbfe;        /* blue-200 */
+
+  /* neutral */
+  --color-neutral-50:  #18181b;       /* zinc-900 */
+  --color-neutral-100: #27272a;       /* zinc-800 */
+  --color-neutral-200: #3f3f46;       /* zinc-700 */
+  --color-neutral-300: #52525b;       /* zinc-600 */
+  --color-neutral-400: #71717a;       /* zinc-500 */
+  --color-neutral-500: #a1a1aa;       /* zinc-400 */
+  --color-neutral-700: #d4d4d8;       /* zinc-300 */
+  --color-neutral-800: #e4e4e7;       /* zinc-200 */
+  --color-neutral-900: #fafafa;       /* zinc-50 */
+  --color-neutral-fg:  #ffffff;
+
+  /* surface */
+  --color-surface: #27272a;           /* zinc-800 */
+}
