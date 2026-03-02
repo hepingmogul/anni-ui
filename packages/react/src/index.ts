@@ -12,6 +12,9 @@ export type { SpaceProps, SpaceDirection, SpaceSize } from './core/Space'
 export { Divider } from './core/Divider'
 export type { DividerProps, DividerOrientation, DividerTextAlign } from './core/Divider'
 
+export { Container, Header, Aside, Main, Footer } from './core/Container'
+export type { ContainerProps, HeaderProps, AsideProps, MainProps, FooterProps } from './core/Container'
+
 // 表单组件
 export { Input } from './core/Input'
 export type { InputProps, InputSize } from './core/Input'

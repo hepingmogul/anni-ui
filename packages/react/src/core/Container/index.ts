@@ -1,0 +1,6 @@
+export { Container } from './Container'
+export { Header } from './Header'
+export { Aside } from './Aside'
+export { Main } from './Main'
+export { Footer } from './Footer'
+export type { ContainerProps, HeaderProps, AsideProps, MainProps, FooterProps } from './Container.types'

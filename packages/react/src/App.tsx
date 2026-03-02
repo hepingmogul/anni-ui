@@ -1,29 +1,33 @@
 import { Moon, Sun } from 'lucide-react'
+import { lazy, Suspense } from 'react'
 import { NavLink, Outlet, Route, Routes } from 'react-router-dom'
-import { useTheme } from './index'
-import BadgePage from './pages/BadgePage'
-import BreadcrumbPage from './pages/BreadcrumbPage'
-import ButtonPage from './pages/ButtonPage'
-import CardPage from './pages/CardPage'
-import CheckboxPage from './pages/CheckboxPage'
-import DividerPage from './pages/DividerPage'
-import FormPage from './pages/FormPage'
-import IndexPage from './pages/IndexPage'
-import InputPage from './pages/InputPage'
-import InputNumberPage from './pages/InputNumberPage'
-import RadioPage from './pages/RadioPage'
-import SliderPage from './pages/SliderPage'
-import SpacePage from './pages/SpacePage'
-import SpinnerPage from './pages/SpinnerPage'
-import SwitchPage from './pages/SwitchPage'
-import TabsPage from './pages/TabsPage'
-import ToastPage from './pages/ToastPage'
+import { Aside, Container, Main, useTheme } from './index'
+
+const ContainerPage = lazy(() => import('./pages/ContainerPage'))
+const BadgePage = lazy(() => import('./pages/BadgePage'))
+const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'))
+const ButtonPage = lazy(() => import('./pages/ButtonPage'))
+const CardPage = lazy(() => import('./pages/CardPage'))
+const CheckboxPage = lazy(() => import('./pages/CheckboxPage'))
+const DividerPage = lazy(() => import('./pages/DividerPage'))
+const FormPage = lazy(() => import('./pages/FormPage'))
+const IndexPage = lazy(() => import('./pages/IndexPage'))
+const InputPage = lazy(() => import('./pages/InputPage'))
+const InputNumberPage = lazy(() => import('./pages/InputNumberPage'))
+const RadioPage = lazy(() => import('./pages/RadioPage'))
+const SliderPage = lazy(() => import('./pages/SliderPage'))
+const SpacePage = lazy(() => import('./pages/SpacePage'))
+const SpinnerPage = lazy(() => import('./pages/SpinnerPage'))
+const SwitchPage = lazy(() => import('./pages/SwitchPage'))
+const TabsPage = lazy(() => import('./pages/TabsPage'))
+const ToastPage = lazy(() => import('./pages/ToastPage'))
 
 const navItems = [
   { label: '总览', path: '/' },
   { label: '基础', type: 'group' },
   { label: 'Button', path: '/button' },
   { label: '布局', type: 'group' },
+  { label: 'Container', path: '/container' },
   { label: 'Space', path: '/space' },
   { label: 'Divider', path: '/divider' },
   { label: '表单', type: 'group' },
@@ -61,9 +65,8 @@ function ThemeToggle() {
 
 function Layout() {
   return (
-    <div className="min-h-screen bg-neutral-50 flex">
-      {/* 侧边导航 */}
-      <aside className="w-48 shrink-0 border-r border-neutral-200 bg-surface flex flex-col">
+    <Container className="h-screen bg-neutral-50 overflow-hidden">
+      <Aside className="w-48 border-r border-neutral-200 bg-surface">
         <div className="px-4 py-5 border-b border-neutral-100">
           <span className="font-bold text-neutral-900 text-sm">React UI</span>
         </div>
@@ -79,10 +82,9 @@ function Layout() {
                 to={item.path!}
                 end={item.path === '/'}
                 className={({ isActive }) =>
-                  `block px-4 py-1.5 text-sm rounded-md mx-2 transition-colors ${
-                    isActive
-                      ? 'bg-neutral-100 text-neutral-900 font-medium'
-                      : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100'
+                  `block px-4 py-1.5 text-sm rounded-md mx-2 transition-colors ${isActive
+                    ? 'bg-neutral-100 text-neutral-900 font-medium'
+                    : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100'
                   }`
                 }
               >
@@ -92,16 +94,14 @@ function Layout() {
           )}
         </nav>
         <ThemeToggle />
-      </aside>
+      </Aside>
 
-      {/* 内容区域 */}
-      <main className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl mx-auto px-8 py-10">
+      <Main className="max-w-3xl mx-auto px-8 py-10">
+        <Suspense fallback={null}>
           <Outlet />
-        </div>
-      </main>
-
-    </div>
+        </Suspense>
+      </Main>
+    </Container>
   )
 }
 
@@ -121,6 +121,7 @@ export default function App() {
         <Route path="input-number" element={<InputNumberPage />} />
         <Route path="radio" element={<RadioPage />} />
         <Route path="slider" element={<SliderPage />} />
+        <Route path="container" element={<ContainerPage />} />
         <Route path="space" element={<SpacePage />} />
         <Route path="spinner" element={<SpinnerPage />} />
         <Route path="switch" element={<SwitchPage />} />
