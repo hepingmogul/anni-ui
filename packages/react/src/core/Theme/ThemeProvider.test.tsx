@@ -1,8 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ThemeProvider } from './ThemeProvider'
 import { useTheme } from './ThemeProvider'
+
+// pnpm vitest run src/core/Theme/ThemeProvider.test.tsx
 
 const ThemeConsumer = () => {
   const { mode, setMode, toggle, theme } = useTheme()

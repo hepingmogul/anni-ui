@@ -81,6 +81,9 @@ export type { TabsProps, TabItem } from './core/Tabs'
 export { Breadcrumb } from './core/Breadcrumb'
 export type { BreadcrumbProps, BreadcrumbItem } from './core/Breadcrumb'
 
+export { Anchor } from './core/Anchor'
+export type { AnchorProps, AnchorType, AnchorUnderline, AnchorTarget } from './core/Anchor'
+
 // 主题
 export { ThemeProvider, useTheme } from './core/Theme'
 export type { ThemeMode, ThemeContextValue, ThemeProviderProps } from './core/Theme'
