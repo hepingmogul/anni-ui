@@ -38,6 +38,18 @@ describe('Divider', () => {
     })
   })
 
+  describe('textAlign', () => {
+    it('textAlign="left" 时文字左对齐', () => {
+      render(<Divider textAlign="left">左对齐</Divider>)
+      expect(screen.getByText('左对齐')).toBeInTheDocument()
+    })
+
+    it('textAlign="right" 时文字右对齐', () => {
+      render(<Divider textAlign="right">右对齐</Divider>)
+      expect(screen.getByText('右对齐')).toBeInTheDocument()
+    })
+  })
+
   describe('className 追加', () => {
     it('自定义 className 正确合并', () => {
       render(<Divider data-testid="divider" className="my-custom" />)

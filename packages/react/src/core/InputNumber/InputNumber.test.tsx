@@ -84,4 +84,55 @@ describe('InputNumber', () => {
       expect(onChange).toHaveBeenCalledWith(1.1)
     })
   })
+
+  describe('手动输入', () => {
+    it('blur 后解析输入值并触发 onChange', async () => {
+      const onChange = vi.fn()
+      render(<InputNumber onChange={onChange} />)
+      const input = screen.getByRole('textbox')
+      await userEvent.click(input)
+      await userEvent.type(input, '42')
+      await userEvent.tab()
+      expect(onChange).toHaveBeenCalledWith(42)
+    })
+
+    it('blur 时输入为空则 onChange(null)', async () => {
+      const onChange = vi.fn()
+      render(<InputNumber onChange={onChange} />)
+      const input = screen.getByRole('textbox')
+      await userEvent.click(input)
+      await userEvent.tab()
+      expect(onChange).toHaveBeenCalledWith(null)
+    })
+
+    it('blur 时输入非数字则 onChange(null)', async () => {
+      const onChange = vi.fn()
+      render(<InputNumber onChange={onChange} />)
+      const input = screen.getByRole('textbox')
+      await userEvent.click(input)
+      await userEvent.type(input, 'abc')
+      await userEvent.tab()
+      expect(onChange).toHaveBeenCalledWith(null)
+    })
+
+    it('blur 时值超出 max 会被 clamp', async () => {
+      const onChange = vi.fn()
+      render(<InputNumber max={10} onChange={onChange} />)
+      const input = screen.getByRole('textbox')
+      await userEvent.click(input)
+      await userEvent.type(input, '100')
+      await userEvent.tab()
+      expect(onChange).toHaveBeenCalledWith(10)
+    })
+
+    it('blur 时值低于 min 会被 clamp', async () => {
+      const onChange = vi.fn()
+      render(<InputNumber min={5} onChange={onChange} />)
+      const input = screen.getByRole('textbox')
+      await userEvent.click(input)
+      await userEvent.type(input, '1')
+      await userEvent.tab()
+      expect(onChange).toHaveBeenCalledWith(5)
+    })
+  })
 })

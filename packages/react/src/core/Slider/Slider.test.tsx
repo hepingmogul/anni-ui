@@ -42,6 +42,51 @@ describe('Slider', () => {
       await userEvent.keyboard('{ArrowLeft}')
       expect(onChange).toHaveBeenCalledWith(45)
     })
+
+    it('上箭头键增加 step，触发 onChange', async () => {
+      const onChange = vi.fn()
+      render(<Slider value={50} step={5} onChange={onChange} />)
+      const slider = screen.getByRole('slider')
+      slider.focus()
+      await userEvent.keyboard('{ArrowUp}')
+      expect(onChange).toHaveBeenCalledWith(55)
+    })
+
+    it('下箭头键减少 step，触发 onChange', async () => {
+      const onChange = vi.fn()
+      render(<Slider value={50} step={5} onChange={onChange} />)
+      const slider = screen.getByRole('slider')
+      slider.focus()
+      await userEvent.keyboard('{ArrowDown}')
+      expect(onChange).toHaveBeenCalledWith(45)
+    })
+
+    it('Home 键跳至 min', async () => {
+      const onChange = vi.fn()
+      render(<Slider value={50} min={0} max={100} onChange={onChange} />)
+      const slider = screen.getByRole('slider')
+      slider.focus()
+      await userEvent.keyboard('{Home}')
+      expect(onChange).toHaveBeenCalledWith(0)
+    })
+
+    it('End 键跳至 max', async () => {
+      const onChange = vi.fn()
+      render(<Slider value={50} min={0} max={100} onChange={onChange} />)
+      const slider = screen.getByRole('slider')
+      slider.focus()
+      await userEvent.keyboard('{End}')
+      expect(onChange).toHaveBeenCalledWith(100)
+    })
+
+    it('其他按键不触发 onChange', async () => {
+      const onChange = vi.fn()
+      render(<Slider value={50} onChange={onChange} />)
+      const slider = screen.getByRole('slider')
+      slider.focus()
+      await userEvent.keyboard('{Enter}')
+      expect(onChange).not.toHaveBeenCalled()
+    })
   })
 
   describe('边界条件', () => {
@@ -72,6 +117,34 @@ describe('Slider', () => {
       slider.focus()
       await userEvent.keyboard('{ArrowRight}')
       expect(onChange).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('range 双滑块', () => {
+    it('range=true 第一个滑块键盘右箭头触发 onChange', async () => {
+      const onChange = vi.fn()
+      render(<Slider range value={[20, 80]} step={5} onChange={onChange} />)
+      const sliders = screen.getAllByRole('slider')
+      sliders[0].focus()
+      await userEvent.keyboard('{ArrowRight}')
+      expect(onChange).toHaveBeenCalledWith([25, 80])
+    })
+
+    it('range=true 第二个滑块键盘左箭头触发 onChange', async () => {
+      const onChange = vi.fn()
+      render(<Slider range value={[20, 80]} step={5} onChange={onChange} />)
+      const sliders = screen.getAllByRole('slider')
+      sliders[1].focus()
+      await userEvent.keyboard('{ArrowLeft}')
+      expect(onChange).toHaveBeenCalledWith([20, 75])
+    })
+  })
+
+  describe('defaultValue', () => {
+    it('非受控模式使用 defaultValue', () => {
+      render(<Slider defaultValue={30} min={0} max={100} />)
+      const slider = screen.getByRole('slider')
+      expect(slider).toHaveAttribute('aria-valuenow', '30')
     })
   })
 })

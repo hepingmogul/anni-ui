@@ -75,6 +75,24 @@ describe('Switch', () => {
     })
   })
 
+  describe('键盘操作', () => {
+    it('Space 键触发切换', async () => {
+      const onChange = vi.fn()
+      render(<Switch onChange={onChange} />)
+      screen.getByRole('switch').focus()
+      await userEvent.keyboard(' ')
+      expect(onChange).toHaveBeenCalledWith(true)
+    })
+
+    it('Enter 键触发切换', async () => {
+      const onChange = vi.fn()
+      render(<Switch onChange={onChange} />)
+      screen.getByRole('switch').focus()
+      await userEvent.keyboard('{Enter}')
+      expect(onChange).toHaveBeenCalledWith(true)
+    })
+  })
+
   describe('disabled', () => {
     it('disabled 时点击不触发 onChange', async () => {
       const onChange = vi.fn()

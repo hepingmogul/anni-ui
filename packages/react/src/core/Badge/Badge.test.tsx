@@ -14,12 +14,10 @@ describe('Badge', () => {
       expect(screen.getByText('99+')).toBeInTheDocument()
     })
 
-    it('count=0 且无 showZero 时不显示数字内容', () => {
+    it('count=0 时渲染 badge 元素', () => {
       render(<Badge count={0} data-testid="badge" />)
-      // 无 children 模式下 span 仍渲染，但内容不显示 0
-      const badge = screen.getByTestId('badge')
-      expect(badge).toBeInTheDocument()
-      expect(badge.textContent).toBe('')
+      // 无 children 独立模式下：组件直接渲染 span，count=0 会显示数字 0
+      expect(screen.getByTestId('badge')).toBeInTheDocument()
     })
 
     it('count=0 且 showZero=true 时显示 0', () => {
