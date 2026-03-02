@@ -71,6 +71,9 @@ export function Form<T extends FieldValues = FieldValues>({
   unregister,
   watch,
   clearErrors,
+  // FIXME: subscribe 方法（react-hook-form 的新版本新增的）, 暂时不需要使用
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  subscribe,
   ref,
   ...rest
 }: FormProps<T>) {
