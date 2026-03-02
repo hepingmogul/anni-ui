@@ -1,17 +1,23 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Check, Minus } from 'lucide-react'
 import { cn } from '../utils/cn'
 import type { CheckboxProps } from './Checkbox.types'
 
 export function Checkbox({
   indeterminate = false,
-  label,
-  error = false,
   disabled,
   checked,
+  defaultChecked = false,
+  onChange,
   className,
+  'aria-invalid': ariaInvalid,
   ...props
 }: CheckboxProps) {
   const ref = useRef<HTMLInputElement>(null)
+  const isControlled = checked !== undefined
+  const [internalChecked, setInternalChecked] = useState(defaultChecked)
+  const isChecked = isControlled ? checked : internalChecked
+  const isError = ariaInvalid === 'true' || ariaInvalid === true
 
   useEffect(() => {
     if (ref.current) {
@@ -19,32 +25,51 @@ export function Checkbox({
     }
   }, [indeterminate])
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isControlled) {
+      setInternalChecked(e.target.checked)
+    }
+    onChange?.(e)
+  }
+
+  const showCheck = !indeterminate && isChecked
+  const showMinus = indeterminate
+
   return (
-    <label
+    <span
       className={cn(
-        'inline-flex items-center gap-2 cursor-pointer select-none',
+        'relative inline-flex items-center justify-center cursor-pointer',
         disabled && 'cursor-not-allowed opacity-60',
+        className,
       )}
     >
       <input
         ref={ref}
         type="checkbox"
-        checked={checked}
+        checked={isControlled ? checked : undefined}
+        defaultChecked={isControlled ? undefined : defaultChecked}
         disabled={disabled}
-        className={cn(
-          'h-4 w-4 rounded border-neutral-300 text-primary cursor-pointer',
-          'focus:ring-2 focus:ring-primary-ring focus:ring-offset-1',
-          error && 'border-danger',
-          disabled && 'cursor-not-allowed',
-          className,
-        )}
+        onChange={handleChange}
+        aria-invalid={ariaInvalid}
+        className="sr-only peer"
         {...props}
       />
-      {label && (
-        <span className={cn('text-sm text-neutral-700', error && 'text-danger')}>
-          {label}
-        </span>
-      )}
-    </label>
+      <span
+        className={cn(
+          'h-4 w-4 rounded flex items-center justify-center border-2 transition-colors',
+          'peer-focus-visible:ring-2 peer-focus-visible:ring-primary-ring peer-focus-visible:ring-offset-1',
+          (isChecked || indeterminate)
+            ? isError
+              ? 'bg-danger border-danger'
+              : 'bg-primary border-primary'
+            : isError
+              ? 'border-danger bg-surface'
+              : 'border-neutral-300 bg-surface',
+        )}
+      >
+        {showMinus && <Minus size={10} strokeWidth={3} className="text-white" />}
+        {showCheck && <Check size={10} strokeWidth={3} className="text-white" />}
+      </span>
+    </span>
   )
 }

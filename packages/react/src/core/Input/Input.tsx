@@ -17,70 +17,52 @@ export function Input({
   size = 'md',
   prefix,
   suffix,
-  error = false,
-  errorMessage,
-  label,
   disabled,
   className,
   id,
   ...props
 }: InputProps) {
-  const inputId = id ?? label?.toLowerCase().replace(/\s+/g, '-')
-
   return (
-    <div className="flex flex-col gap-1">
-      {label && (
-        <label htmlFor={inputId} className="text-sm font-medium text-neutral-700">
-          {label}
-        </label>
+    <div
+      className={cn(
+        'flex items-center rounded-md border bg-surface transition-colors',
+        'border-neutral-300 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary-ring focus-within:ring-offset-1',
+        'has-[input[aria-invalid="true"]]:border-danger has-[input[aria-invalid="true"]]:focus-within:ring-danger',
+        disabled && 'bg-neutral-50 cursor-not-allowed opacity-60',
       )}
-      <div
-        className={cn(
-          'flex items-center rounded-md border bg-surface transition-colors',
-          error
-            ? 'border-danger focus-within:ring-2 focus-within:ring-danger focus-within:ring-offset-1'
-            : 'border-neutral-300 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary-ring focus-within:ring-offset-1',
-          disabled && 'bg-neutral-50 cursor-not-allowed opacity-60',
-        )}
-      >
-        {prefix && (
-          <span
-            className={cn(
-              'flex items-center text-neutral-500 border-r border-neutral-300 bg-neutral-50',
-              addonSizeClasses[size],
-              'self-stretch',
-            )}
-          >
-            {prefix}
-          </span>
-        )}
-        <input
-          id={inputId}
-          disabled={disabled}
+    >
+      {prefix && (
+        <span
           className={cn(
-            'flex-1 min-w-0 bg-transparent outline-none text-neutral-900 placeholder:text-neutral-400',
-            'disabled:cursor-not-allowed',
-            sizeClasses[size],
-            prefix && 'rounded-l-none',
-            suffix && 'rounded-r-none',
-            className,
+            'flex items-center text-neutral-500 border-r border-neutral-300 bg-neutral-50 self-stretch',
+            addonSizeClasses[size],
           )}
-          {...props}
-        />
-        {suffix && (
-          <span
-            className={cn(
-              'flex items-center text-neutral-500 border-l border-neutral-300 bg-neutral-50',
-              addonSizeClasses[size],
-              'self-stretch',
-            )}
-          >
-            {suffix}
-          </span>
+        >
+          {prefix}
+        </span>
+      )}
+      <input
+        id={id}
+        disabled={disabled}
+        className={cn(
+          'flex-1 min-w-0 bg-transparent outline-none text-neutral-900 placeholder:text-neutral-400',
+          'disabled:cursor-not-allowed',
+          sizeClasses[size],
+          prefix && 'rounded-l-none',
+          suffix && 'rounded-r-none',
+          className,
         )}
-      </div>
-      {error && errorMessage && (
-        <p className="text-xs text-danger">{errorMessage}</p>
+        {...props}
+      />
+      {suffix && (
+        <span
+          className={cn(
+            'flex items-center text-neutral-500 border-l border-neutral-300 bg-neutral-50 self-stretch',
+            addonSizeClasses[size],
+          )}
+        >
+          {suffix}
+        </span>
       )}
     </div>
   )

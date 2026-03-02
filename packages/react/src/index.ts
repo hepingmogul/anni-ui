@@ -19,6 +19,41 @@ export type { InputProps, InputSize } from './core/Input'
 export { Checkbox } from './core/Checkbox'
 export type { CheckboxProps } from './core/Checkbox'
 
+export {
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  FormDescription,
+  FormInputWords,
+} from './core/Form'
+export type {
+  FormProps,
+  FormItemProps,
+  FormLabelProps,
+  FormControlProps,
+  FormMessageProps,
+  FormDescriptionProps,
+  FormInputWordsProps,
+  FormConfigContextValue,
+  FormItemContextValue,
+  FormSize,
+  FormLabelPosition,
+} from './core/Form.types'
+
+export { InputNumber } from './core/InputNumber'
+export type { InputNumberProps, InputNumberSize } from './core/InputNumber'
+
+export { Radio, RadioGroup } from './core/Radio'
+export type { RadioProps, RadioGroupProps, RadioOption } from './core/Radio'
+
+export { Switch } from './core/Switch'
+export type { SwitchProps, SwitchSize } from './core/Switch'
+
+export { Slider } from './core/Slider'
+export type { SliderProps } from './core/Slider'
+
 // 数据展示
 export { Badge } from './core/Badge'
 export type { BadgeProps, BadgeVariant } from './core/Badge'

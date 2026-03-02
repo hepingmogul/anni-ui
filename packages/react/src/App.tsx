@@ -7,10 +7,15 @@ import ButtonPage from './pages/ButtonPage'
 import CardPage from './pages/CardPage'
 import CheckboxPage from './pages/CheckboxPage'
 import DividerPage from './pages/DividerPage'
+import FormPage from './pages/FormPage'
 import IndexPage from './pages/IndexPage'
 import InputPage from './pages/InputPage'
+import InputNumberPage from './pages/InputNumberPage'
+import RadioPage from './pages/RadioPage'
+import SliderPage from './pages/SliderPage'
 import SpacePage from './pages/SpacePage'
 import SpinnerPage from './pages/SpinnerPage'
+import SwitchPage from './pages/SwitchPage'
 import TabsPage from './pages/TabsPage'
 import ToastPage from './pages/ToastPage'
 
@@ -22,8 +27,13 @@ const navItems = [
   { label: 'Space', path: '/space' },
   { label: 'Divider', path: '/divider' },
   { label: '表单', type: 'group' },
+  { label: 'Form', path: '/form' },
   { label: 'Input', path: '/input' },
+  { label: 'InputNumber', path: '/input-number' },
   { label: 'Checkbox', path: '/checkbox' },
+  { label: 'Radio', path: '/radio' },
+  { label: 'Switch', path: '/switch' },
+  { label: 'Slider', path: '/slider' },
   { label: '数据展示', type: 'group' },
   { label: 'Badge', path: '/badge' },
   { label: 'Card', path: '/card' },
@@ -106,9 +116,14 @@ export default function App() {
         <Route path="card" element={<CardPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="divider" element={<DividerPage />} />
+        <Route path="form" element={<FormPage />} />
         <Route path="input" element={<InputPage />} />
+        <Route path="input-number" element={<InputNumberPage />} />
+        <Route path="radio" element={<RadioPage />} />
+        <Route path="slider" element={<SliderPage />} />
         <Route path="space" element={<SpacePage />} />
         <Route path="spinner" element={<SpinnerPage />} />
+        <Route path="switch" element={<SwitchPage />} />
         <Route path="tabs" element={<TabsPage />} />
         <Route path="toast" element={<ToastPage />} />
       </Route>
