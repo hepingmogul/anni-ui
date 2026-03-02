@@ -40,7 +40,7 @@ export type {
   FormItemContextValue,
   FormSize,
   FormLabelPosition,
-} from './core/Form.types'
+} from './core/Form'
 
 export { InputNumber } from './core/InputNumber'
 export type { InputNumberProps, InputNumberSize } from './core/InputNumber'
