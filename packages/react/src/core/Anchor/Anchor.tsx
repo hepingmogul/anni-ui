@@ -28,7 +28,7 @@ const underlineClasses: Record<AnchorUnderline, string> = {
   never: 'no-underline',
 }
 
-const disabledClasses = 'pointer-events-none opacity-50 cursor-not-allowed'
+const disabledClasses = 'opacity-50 cursor-not-allowed'
 
 export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(function Anchor(
   {
@@ -50,7 +50,7 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(function Anchor
     'inline-flex items-center gap-1 transition-colors',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-ring focus-visible:ring-offset-1',
     typeClasses[type],
-    underlineClasses[underline],
+    !disabled && underlineClasses[underline],
     disabled && disabledClasses,
     className,
   )
