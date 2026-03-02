@@ -4,8 +4,9 @@
 
 :root {
   /* primary (blue) */
-  --color-primary-light:    #f5f3ff;  /* violet-50 */
-  --color-primary:          #7c3aed;  /* violet-600 */
+  --color-primary-light:        #f5f3ff;  /* violet-50 */
+  --color-primary-light-active: #ede9fe;  /* violet-100 */
+  --color-primary:              #7c3aed;  /* violet-600 */
   --color-primary-hover:    #6d28d9;  /* violet-700 */
   --color-primary-active:   #5b21b6;  /* violet-800 */
   --color-primary-disabled: #c4b5fd;  /* violet-300 */
@@ -13,27 +14,40 @@
   --color-primary-fg:       #ffffff;
 
   /* danger (red) */
-  --color-danger-light:    #fef2f2;   /* red-50 */
-  --color-danger:          #dc2626;   /* red-600 */
+  --color-danger-light:        #fef2f2;  /* red-50 */
+  --color-danger-light-active: #fee2e2;  /* red-100 */
+  --color-danger:              #dc2626;  /* red-600 */
   --color-danger-hover:    #b91c1c;   /* red-700 */
   --color-danger-active:   #991b1b;   /* red-800 */
   --color-danger-disabled: #fca5a5;   /* red-300 */
   --color-danger-fg:       #ffffff;
 
   /* success (green) */
-  --color-success-light: #f0fdf4;     /* green-50 */
-  --color-success:       #16a34a;     /* green-600 */
-  --color-success-fg:    #166534;     /* green-800 */
+  --color-success-light:        #f0fdf4;  /* green-50 */
+  --color-success-light-active: #dcfce7;  /* green-100 */
+  --color-success:              #16a34a;  /* green-600 */
+  --color-success-hover:        #15803d;  /* green-700 */
+  --color-success-active:       #166534;  /* green-800 */
+  --color-success-disabled:     #86efac;  /* green-300 */
+  --color-success-fg:           #ffffff;
 
   /* warning (yellow) */
-  --color-warning-light: #fefce8;     /* yellow-50 */
-  --color-warning:       #ca8a04;     /* yellow-600 */
-  --color-warning-fg:    #854d0e;     /* yellow-800 */
+  --color-warning-light:        #fefce8;  /* yellow-50 */
+  --color-warning-light-active: #fef9c3;  /* yellow-100 */
+  --color-warning:              #ca8a04;  /* yellow-600 */
+  --color-warning-hover:        #a16207;  /* yellow-700 */
+  --color-warning-active:       #854d0e;  /* yellow-800 */
+  --color-warning-disabled:     #fde047;  /* yellow-300 */
+  --color-warning-fg:           #ffffff;
 
   /* info (blue) */
-  --color-info-light: #eff6ff;        /* blue-50 */
-  --color-info:       #3b82f6;        /* blue-500 */
-  --color-info-fg:    #1e40af;        /* blue-800 */
+  --color-info-light:        #eff6ff;  /* blue-50 */
+  --color-info-light-active: #dbeafe;  /* blue-100 */
+  --color-info:              #3b82f6;  /* blue-500 */
+  --color-info-hover:        #2563eb;  /* blue-600 */
+  --color-info-active:       #1d4ed8;  /* blue-700 */
+  --color-info-disabled:     #93c5fd;  /* blue-300 */
+  --color-info-fg:           #ffffff;
 
   /* neutral (gray) */
   --color-neutral-50:  #f9fafb;
@@ -53,8 +67,9 @@
 
 .dark {
   /* primary */
-  --color-primary-light:    #2e1065;  /* violet-950 */
-  --color-primary:          #8b5cf6;  /* violet-500 */
+  --color-primary-light:        #2e1065;  /* violet-950 */
+  --color-primary-light-active: #4c1d95;  /* violet-900 */
+  --color-primary:              #8b5cf6;  /* violet-500 */
   --color-primary-hover:    #7c3aed;  /* violet-600 */
   --color-primary-active:   #6d28d9;  /* violet-700 */
   --color-primary-disabled: #4c1d95;  /* violet-900 */
@@ -62,27 +77,40 @@
   --color-primary-fg:       #ffffff;
 
   /* danger */
-  --color-danger-light:    #450a0a;   /* red-950 */
-  --color-danger:          #ef4444;   /* red-500 */
+  --color-danger-light:        #450a0a;  /* red-950 */
+  --color-danger-light-active: #7f1d1d;  /* red-900 */
+  --color-danger:              #ef4444;  /* red-500 */
   --color-danger-hover:    #dc2626;   /* red-600 */
   --color-danger-active:   #b91c1c;   /* red-700 */
   --color-danger-disabled: #7f1d1d;   /* red-900 */
   --color-danger-fg:       #ffffff;
 
   /* success */
-  --color-success-light: #052e16;     /* green-950 */
-  --color-success:       #22c55e;     /* green-500 */
-  --color-success-fg:    #bbf7d0;     /* green-200 */
+  --color-success-light:        #052e16;  /* green-950 */
+  --color-success-light-active: #14532d;  /* green-900 */
+  --color-success:              #22c55e;  /* green-500 */
+  --color-success-hover:        #4ade80;  /* green-400 */
+  --color-success-active:       #86efac;  /* green-300 */
+  --color-success-disabled:     #14532d;  /* green-900 */
+  --color-success-fg:           #052e16;  /* green-950 */
 
   /* warning */
-  --color-warning-light: #1c1917;     /* stone-950 */
-  --color-warning:       #eab308;     /* yellow-500 */
-  --color-warning-fg:    #fef08a;     /* yellow-200 */
+  --color-warning-light:        #1c1917;  /* stone-950 */
+  --color-warning-light-active: #292524;  /* stone-900 */
+  --color-warning:              #eab308;  /* yellow-500 */
+  --color-warning-hover:        #facc15;  /* yellow-400 */
+  --color-warning-active:       #fde047;  /* yellow-300 */
+  --color-warning-disabled:     #713f12;  /* yellow-900 */
+  --color-warning-fg:           #1c1917;  /* stone-950 */
 
   /* info */
-  --color-info-light: #172554;        /* blue-950 */
-  --color-info:       #60a5fa;        /* blue-400 */
-  --color-info-fg:    #bfdbfe;        /* blue-200 */
+  --color-info-light:        #172554;  /* blue-950 */
+  --color-info-light-active: #1e3a8a;  /* blue-900 */
+  --color-info:              #60a5fa;  /* blue-400 */
+  --color-info-hover:        #93c5fd;  /* blue-300 */
+  --color-info-active:       #bfdbfe;  /* blue-200 */
+  --color-info-disabled:     #1e3a8a;  /* blue-900 */
+  --color-info-fg:           #172554;  /* blue-950 */
 
   /* neutral */
   --color-neutral-50:  #18181b;       /* zinc-900 */

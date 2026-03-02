@@ -14,7 +14,46 @@ export default function ButtonPage() {
           <Button variant="secondary">Secondary</Button>
           <Button variant="ghost">Ghost</Button>
           <Button variant="danger">Danger</Button>
+          <Button variant="success">Success</Button>
+          <Button variant="warning">Warning</Button>
+          <Button variant="info">Info</Button>
         </Space>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-base font-semibold text-neutral-700 mb-4">辅助色（Semantic）</h2>
+        <div className="flex flex-col gap-3">
+          <Space wrap size="sm">
+            <Button variant="primary">Primary</Button>
+            <Button variant="primary" outline>Primary Outline</Button>
+            <Button variant="primary" plain>Primary Plain</Button>
+            <Button variant="primary" disabled>Disabled</Button>
+          </Space>
+          <Space wrap size="sm">
+            <Button variant="danger">Danger</Button>
+            <Button variant="danger" outline>Danger Outline</Button>
+            <Button variant="danger" plain>Danger Plain</Button>
+            <Button variant="danger" disabled>Disabled</Button>
+          </Space>
+          <Space wrap size="sm">
+            <Button variant="success">Success</Button>
+            <Button variant="success" outline>Success Outline</Button>
+            <Button variant="success" plain>Success Plain</Button>
+            <Button variant="success" disabled>Disabled</Button>
+          </Space>
+          <Space wrap size="sm">
+            <Button variant="warning">Warning</Button>
+            <Button variant="warning" outline>Warning Outline</Button>
+            <Button variant="warning" plain>Warning Plain</Button>
+            <Button variant="warning" disabled>Disabled</Button>
+          </Space>
+          <Space wrap size="sm">
+            <Button variant="info">Info</Button>
+            <Button variant="info" outline>Info Outline</Button>
+            <Button variant="info" plain>Info Plain</Button>
+            <Button variant="info" disabled>Disabled</Button>
+          </Space>
+        </div>
       </section>
 
       <section className="mb-8">

@@ -12,17 +12,29 @@ const variantClasses = {
     'bg-transparent text-neutral-700 hover:bg-neutral-100 active:bg-neutral-200 disabled:text-neutral-400',
   danger:
     'bg-danger text-danger-fg hover:bg-danger-hover active:bg-danger-active disabled:bg-danger-disabled',
+  success:
+    'bg-success text-success-fg hover:bg-success-hover active:bg-success-active disabled:bg-success-disabled',
+  warning:
+    'bg-warning text-warning-fg hover:bg-warning-hover active:bg-warning-active disabled:bg-warning-disabled',
+  info:
+    'bg-info text-info-fg hover:bg-info-hover active:bg-info-active disabled:bg-info-disabled',
 }
 
 const outlineVariantClasses = {
   primary:
-    'border border-primary text-primary bg-transparent hover:bg-primary/10 active:bg-primary/20 disabled:border-neutral-300 disabled:text-neutral-400',
+    'border border-primary text-primary bg-transparent hover:bg-primary-light active:bg-primary-light-active disabled:border-neutral-300 disabled:text-neutral-400',
   secondary:
     'border border-neutral-300 text-neutral-700 bg-transparent hover:bg-neutral-100 active:bg-neutral-200 disabled:border-neutral-200 disabled:text-neutral-400',
   ghost:
     'border border-neutral-200 text-neutral-700 bg-transparent hover:bg-neutral-100 active:bg-neutral-200 disabled:text-neutral-400',
   danger:
-    'border border-danger text-danger bg-transparent hover:bg-danger/10 active:bg-danger/20 disabled:border-neutral-300 disabled:text-neutral-400',
+    'border border-danger text-danger bg-transparent hover:bg-danger-light active:bg-danger-light-active disabled:border-neutral-300 disabled:text-neutral-400',
+  success:
+    'border border-success text-success bg-transparent hover:bg-success-light active:bg-success-light-active disabled:border-neutral-300 disabled:text-neutral-400',
+  warning:
+    'border border-warning text-warning bg-transparent hover:bg-warning-light active:bg-warning-light-active disabled:border-neutral-300 disabled:text-neutral-400',
+  info:
+    'border border-info text-info bg-transparent hover:bg-info-light active:bg-info-light-active disabled:border-neutral-300 disabled:text-neutral-400',
 }
 
 const plainVariantClasses = {
@@ -34,6 +46,12 @@ const plainVariantClasses = {
     'text-neutral-500 hover:text-neutral-700 active:text-neutral-800 disabled:text-neutral-400',
   danger:
     'text-danger hover:text-danger-hover active:text-danger-active disabled:text-neutral-400',
+  success:
+    'text-success hover:text-success-hover active:text-success-active disabled:text-neutral-400',
+  warning:
+    'text-warning hover:text-warning-hover active:text-warning-active disabled:text-neutral-400',
+  info:
+    'text-info hover:text-info-hover active:text-info-active disabled:text-neutral-400',
 }
 
 const sizeClasses = {
