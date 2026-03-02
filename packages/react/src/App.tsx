@@ -16,6 +16,7 @@ const InputPage = lazy(() => import('./pages/InputPage'))
 const InputNumberPage = lazy(() => import('./pages/InputNumberPage'))
 const RadioPage = lazy(() => import('./pages/RadioPage'))
 const SliderPage = lazy(() => import('./pages/SliderPage'))
+const GridPage = lazy(() => import('./pages/GridPage'))
 const SpacePage = lazy(() => import('./pages/SpacePage'))
 const SpinnerPage = lazy(() => import('./pages/SpinnerPage'))
 const SwitchPage = lazy(() => import('./pages/SwitchPage'))
@@ -28,6 +29,7 @@ const navItems = [
   { label: 'Button', path: '/button' },
   { label: '布局', type: 'group' },
   { label: 'Container', path: '/container' },
+  { label: 'Row / Col', path: '/grid' },
   { label: 'Space', path: '/space' },
   { label: 'Divider', path: '/divider' },
   { label: '表单', type: 'group' },
@@ -54,7 +56,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="flex items-center gap-2 px-4 py-3 w-full text-sm text-neutral-500 hover:text-neutral-900 transition-colors border-t border-neutral-200"
+      className="flex items-center gap-2 px-4 py-3 w-full text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors border-t border-neutral-200 dark:border-neutral-700"
       aria-label={theme === 'dark' ? '切换为明亮模式' : '切换为暗黑模式'}
     >
       {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
@@ -66,14 +68,14 @@ function ThemeToggle() {
 function Layout() {
   return (
     <Container className="h-screen bg-neutral-50 overflow-hidden">
-      <Aside className="w-48 border-r border-neutral-200 bg-surface">
-        <div className="px-4 py-5 border-b border-neutral-100">
-          <span className="font-bold text-neutral-900 text-sm">React UI</span>
+      <Aside className="w-48 border-r border-neutral-200 dark:border-neutral-700 bg-surface">
+        <div className="px-4 py-5 border-b border-neutral-100 dark:border-neutral-700">
+          <span className="font-bold text-neutral-900 dark:text-neutral-100 text-sm">React UI</span>
         </div>
         <nav className="flex-1 overflow-y-auto py-3">
           {navItems.map((item, i) =>
             item.type === 'group' ? (
-              <p key={i} className="px-4 pt-4 pb-1 text-xs font-semibold text-neutral-400 uppercase tracking-wider">
+              <p key={i} className="px-4 pt-4 pb-1 text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
                 {item.label}
               </p>
             ) : (
@@ -83,8 +85,8 @@ function Layout() {
                 end={item.path === '/'}
                 className={({ isActive }) =>
                   `block px-4 py-1.5 text-sm rounded-md mx-2 transition-colors ${isActive
-                    ? 'bg-neutral-100 text-neutral-900 font-medium'
-                    : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100'
+                    ? 'bg-neutral-100 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium'
+                    : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700'
                   }`
                 }
               >
@@ -122,6 +124,7 @@ export default function App() {
         <Route path="radio" element={<RadioPage />} />
         <Route path="slider" element={<SliderPage />} />
         <Route path="container" element={<ContainerPage />} />
+        <Route path="grid" element={<GridPage />} />
         <Route path="space" element={<SpacePage />} />
         <Route path="spinner" element={<SpinnerPage />} />
         <Route path="switch" element={<SwitchPage />} />

@@ -15,6 +15,9 @@ export type { DividerProps, DividerOrientation, DividerTextAlign } from './core/
 export { Container, Header, Aside, Main, Footer } from './core/Container'
 export type { ContainerProps, HeaderProps, AsideProps, MainProps, FooterProps } from './core/Container'
 
+export { Row, Col } from './core/Row'
+export type { RowProps, RowJustify, RowAlign, ColProps, ColResponsiveProps } from './core/Row'
+
 // 表单组件
 export { Input } from './core/Input'
 export type { InputProps, InputSize } from './core/Input'
