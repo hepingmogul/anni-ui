@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { SwitchProps } from './Switch.types'
 
@@ -26,20 +26,23 @@ const labelTextSizeClasses = {
   lg: 'text-xs',
 }
 
-export function Switch({
-  checked,
-  defaultChecked = false,
-  onChange,
-  size = 'md',
-  disabled = false,
-  label,
-  checkedLabel,
-  uncheckedLabel,
-  className,
-  id,
-  'aria-invalid': ariaInvalid,
-  'aria-describedby': ariaDescribedby,
-}: SwitchProps) {
+export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
+  {
+    checked,
+    defaultChecked = false,
+    onChange,
+    size = 'md',
+    disabled = false,
+    label,
+    checkedLabel,
+    uncheckedLabel,
+    className,
+    id,
+    'aria-invalid': ariaInvalid,
+    'aria-describedby': ariaDescribedby,
+  },
+  ref,
+) {
   const isControlled = checked !== undefined
   const [internalChecked, setInternalChecked] = useState(defaultChecked)
   const isChecked = isControlled ? checked : internalChecked
@@ -69,6 +72,7 @@ export function Switch({
       )}
     >
       <button
+        ref={ref}
         id={id}
         type="button"
         role="switch"
@@ -110,4 +114,4 @@ export function Switch({
       )}
     </span>
   )
-}
+})

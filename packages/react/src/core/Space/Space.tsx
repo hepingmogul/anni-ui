@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { SpaceProps, SpaceSize } from './Space.types'
 
@@ -25,20 +26,24 @@ function resolveGap(size: SpaceSize): { className?: string; style?: React.CSSPro
 
 import type React from 'react'
 
-export function Space({
-  direction = 'horizontal',
-  size = 'md',
-  wrap = false,
-  align = 'center',
-  children,
-  className,
-  style,
-  ...props
-}: SpaceProps) {
+export const Space = forwardRef<HTMLDivElement, SpaceProps>(function Space(
+  {
+    direction = 'horizontal',
+    size = 'md',
+    wrap = false,
+    align = 'center',
+    children,
+    className,
+    style,
+    ...props
+  },
+  ref,
+) {
   const { className: gapClass, style: gapStyle } = resolveGap(size)
 
   return (
     <div
+      ref={ref}
       className={cn(
         'flex',
         direction === 'vertical' ? 'flex-col' : 'flex-row',
@@ -53,4 +58,4 @@ export function Space({
       {children}
     </div>
   )
-}
+})

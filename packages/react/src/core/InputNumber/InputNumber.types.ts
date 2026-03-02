@@ -1,3 +1,5 @@
+import type { Ref } from 'react'
+
 export type InputNumberSize = 'sm' | 'md' | 'lg'
 
 export interface InputNumberProps {
@@ -15,4 +17,5 @@ export interface InputNumberProps {
   id?: string
   'aria-invalid'?: boolean | 'true' | 'false' | 'grammar' | 'spelling'
   'aria-describedby'?: string
+  ref?: Ref<HTMLInputElement>
 }

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 export interface SliderProps {
   min?: number
@@ -15,4 +15,5 @@ export interface SliderProps {
   id?: string
   'aria-invalid'?: boolean | 'true' | 'false' | 'grammar' | 'spelling'
   'aria-describedby'?: string
+  ref?: Ref<HTMLDivElement>
 }

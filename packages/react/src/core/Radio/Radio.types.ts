@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 export interface RadioProps {
   value: string | number
@@ -9,6 +9,7 @@ export interface RadioProps {
   onChange?: (value: string | number) => void
   name?: string
   'aria-invalid'?: boolean | 'true' | 'false' | 'grammar' | 'spelling'
+  ref?: Ref<HTMLLabelElement>
 }
 
 export interface RadioOption {
@@ -30,4 +31,5 @@ export interface RadioGroupProps {
   id?: string
   'aria-invalid'?: boolean | 'true' | 'false' | 'grammar' | 'spelling'
   'aria-describedby'?: string
+  ref?: Ref<HTMLDivElement>
 }

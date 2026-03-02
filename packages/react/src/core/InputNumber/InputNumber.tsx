@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, forwardRef } from 'react'
 import { Minus, Plus } from 'lucide-react'
 import { cn } from '../utils/cn'
 import type { InputNumberProps } from './InputNumber.types'
@@ -34,22 +34,25 @@ function clamp(val: number, min?: number, max?: number): number {
   return val
 }
 
-export function InputNumber({
-  min,
-  max,
-  step = 1,
-  precision,
-  size = 'md',
-  disabled = false,
-  placeholder,
-  value,
-  defaultValue,
-  onChange,
-  className,
-  id,
-  'aria-invalid': ariaInvalid,
-  'aria-describedby': ariaDescribedby,
-}: InputNumberProps) {
+export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(function InputNumber(
+  {
+    min,
+    max,
+    step = 1,
+    precision,
+    size = 'md',
+    disabled = false,
+    placeholder,
+    value,
+    defaultValue,
+    onChange,
+    className,
+    id,
+    'aria-invalid': ariaInvalid,
+    'aria-describedby': ariaDescribedby,
+  },
+  ref,
+) {
   const isControlled = value !== undefined
   const [internalValue, setInternalValue] = useState<number | null>(
     defaultValue !== undefined ? defaultValue : null,
@@ -144,6 +147,7 @@ export function InputNumber({
       </button>
 
       <input
+        ref={ref}
         id={id}
         type="text"
         inputMode="decimal"
@@ -178,4 +182,4 @@ export function InputNumber({
       </button>
     </div>
   )
-}
+})

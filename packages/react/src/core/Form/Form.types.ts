@@ -1,4 +1,4 @@
-import type { FormEventHandler, ReactNode } from 'react'
+import type { FormEventHandler, ReactNode, Ref } from 'react'
 import type { UseFormReturn, FieldValues, FieldError } from 'react-hook-form'
 
 export type FormSize = 'sm' | 'md' | 'lg'
@@ -28,18 +28,21 @@ export interface FormProps<T extends FieldValues = FieldValues>
   onSubmit?: FormEventHandler<HTMLFormElement>
   children?: ReactNode
   className?: string
+  ref?: Ref<HTMLFormElement>
 }
 
 export interface FormItemProps {
   name: string
   className?: string
   children?: ReactNode
+  ref?: Ref<HTMLDivElement>
 }
 
 export interface FormLabelProps {
   required?: boolean
   className?: string
   children?: ReactNode
+  ref?: Ref<HTMLLabelElement>
 }
 
 export interface FormControlProps {
@@ -49,11 +52,13 @@ export interface FormControlProps {
 export interface FormMessageProps {
   className?: string
   children?: ReactNode
+  ref?: Ref<HTMLParagraphElement>
 }
 
 export interface FormDescriptionProps {
   className?: string
   children?: ReactNode
+  ref?: Ref<HTMLParagraphElement>
 }
 
 export interface FormInputWordsProps {

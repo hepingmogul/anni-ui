@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { TabsProps } from './Tabs.types'
 
-export function Tabs({ items, activeKey, defaultActiveKey, onChange, className }: TabsProps) {
+export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
+  { items, activeKey, defaultActiveKey, onChange, className },
+  ref,
+) {
   const [internalKey, setInternalKey] = useState(defaultActiveKey ?? items[0]?.key)
 
   const currentKey = activeKey ?? internalKey
@@ -17,7 +20,7 @@ export function Tabs({ items, activeKey, defaultActiveKey, onChange, className }
   const activeItem = items.find((item) => item.key === currentKey)
 
   return (
-    <div className={cn('flex flex-col', className)}>
+    <div ref={ref} className={cn('flex flex-col', className)}>
       <div className="flex border-b border-neutral-200">
         {items.map((item) => {
           const isActive = item.key === currentKey
@@ -44,4 +47,4 @@ export function Tabs({ items, activeKey, defaultActiveKey, onChange, className }
       )}
     </div>
   )
-}
+})

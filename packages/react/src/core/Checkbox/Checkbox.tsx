@@ -1,27 +1,32 @@
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { Check, Minus } from 'lucide-react'
 import { cn } from '../utils/cn'
 import type { CheckboxProps } from './Checkbox.types'
 
-export function Checkbox({
-  indeterminate = false,
-  disabled,
-  checked,
-  defaultChecked = false,
-  onChange,
-  className,
-  'aria-invalid': ariaInvalid,
-  ...props
-}: CheckboxProps) {
-  const ref = useRef<HTMLInputElement>(null)
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
+  {
+    indeterminate = false,
+    disabled,
+    checked,
+    defaultChecked = false,
+    onChange,
+    className,
+    'aria-invalid': ariaInvalid,
+    ...props
+  },
+  ref,
+) {
+  const innerRef = useRef<HTMLInputElement>(null)
+  useImperativeHandle(ref, () => innerRef.current!)
+
   const isControlled = checked !== undefined
   const [internalChecked, setInternalChecked] = useState(defaultChecked)
   const isChecked = isControlled ? checked : internalChecked
   const isError = ariaInvalid === 'true' || ariaInvalid === true
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.indeterminate = indeterminate
+    if (innerRef.current) {
+      innerRef.current.indeterminate = indeterminate
     }
   }, [indeterminate])
 
@@ -44,7 +49,7 @@ export function Checkbox({
       )}
     >
       <input
-        ref={ref}
+        ref={innerRef}
         type="checkbox"
         checked={isControlled ? checked : undefined}
         defaultChecked={isControlled ? undefined : defaultChecked}
@@ -72,4 +77,4 @@ export function Checkbox({
       </span>
     </span>
   )
-}
+})

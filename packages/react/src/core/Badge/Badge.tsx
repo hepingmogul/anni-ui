@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { BadgeProps } from './Badge.types'
 
@@ -9,16 +10,19 @@ const variantClasses = {
   info:    'bg-info text-info-fg',
 }
 
-export function Badge({
-  variant = 'danger',
-  count,
-  dot = false,
-  max = 99,
-  showZero = false,
-  children,
-  className,
-  ...props
-}: BadgeProps) {
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
+  {
+    variant = 'danger',
+    count,
+    dot = false,
+    max = 99,
+    showZero = false,
+    children,
+    className,
+    ...props
+  },
+  ref,
+) {
   const displayCount = count !== undefined && count > max ? `${max}+` : count
 
   const shouldShow = dot || (count !== undefined && (count > 0 || showZero))
@@ -26,6 +30,7 @@ export function Badge({
   if (!children) {
     return (
       <span
+        ref={ref}
         className={cn(
           'inline-flex items-center justify-center font-medium',
           dot
@@ -42,7 +47,7 @@ export function Badge({
   }
 
   return (
-    <span className="relative inline-flex">
+    <span ref={ref} className="relative inline-flex">
       {children}
       {shouldShow && (
         <span
@@ -61,4 +66,4 @@ export function Badge({
       )}
     </span>
   )
-}
+})

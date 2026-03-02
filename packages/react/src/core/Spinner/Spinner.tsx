@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Loader2 } from 'lucide-react'
 import { cn } from '../utils/cn'
 import type { SpinnerProps } from './Spinner.types'
@@ -20,9 +21,13 @@ const colorClasses = {
   neutral: 'text-neutral-500',
 }
 
-export function Spinner({ size = 'md', color = 'primary', className, ...props }: SpinnerProps) {
+export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(function Spinner(
+  { size = 'md', color = 'primary', className, ...props },
+  ref,
+) {
   return (
     <span
+      ref={ref}
       role="status"
       aria-label="加载中"
       className={cn('inline-flex items-center justify-center', colorClasses[color], className)}
@@ -31,4 +36,4 @@ export function Spinner({ size = 'md', color = 'primary', className, ...props }:
       <Loader2 size={sizeMap[size]} className="animate-spin" />
     </span>
   )
-}
+})

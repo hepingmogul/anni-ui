@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { RadioProps, RadioGroupProps, RadioOption } from './Radio.types'
 
@@ -16,16 +16,19 @@ const RadioGroupContext = createContext<RadioGroupContextValue>({})
 
 // ─── Radio ───────────────────────────────────────────────────────────────────
 
-export function Radio({
-  value,
-  checked,
-  disabled: propDisabled,
-  label,
-  className,
-  onChange,
-  name,
-  'aria-invalid': ariaInvalid,
-}: RadioProps) {
+export const Radio = forwardRef<HTMLLabelElement, RadioProps>(function Radio(
+  {
+    value,
+    checked,
+    disabled: propDisabled,
+    label,
+    className,
+    onChange,
+    name,
+    'aria-invalid': ariaInvalid,
+  },
+  ref,
+) {
   const ctx = useContext(RadioGroupContext)
   const isGrouped = ctx.onChange !== undefined || ctx.value !== undefined
 
@@ -45,6 +48,7 @@ export function Radio({
 
   return (
     <label
+      ref={ref}
       className={cn(
         'inline-flex items-center gap-2 cursor-pointer select-none',
         isDisabled && 'cursor-not-allowed opacity-60',
@@ -89,24 +93,27 @@ export function Radio({
       )}
     </label>
   )
-}
+})
 
 // ─── RadioGroup ──────────────────────────────────────────────────────────────
 
-export function RadioGroup({
-  value,
-  defaultValue,
-  onChange,
-  direction = 'horizontal',
-  disabled = false,
-  options,
-  children,
-  className,
-  name,
-  id,
-  'aria-invalid': ariaInvalid,
-  'aria-describedby': ariaDescribedby,
-}: RadioGroupProps) {
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(function RadioGroup(
+  {
+    value,
+    defaultValue,
+    onChange,
+    direction = 'horizontal',
+    disabled = false,
+    options,
+    children,
+    className,
+    name,
+    id,
+    'aria-invalid': ariaInvalid,
+    'aria-describedby': ariaDescribedby,
+  },
+  ref,
+) {
   const isControlled = value !== undefined
   const [internalValue, setInternalValue] = useState<string | number | undefined>(defaultValue)
   const currentValue = isControlled ? value : internalValue
@@ -124,6 +131,7 @@ export function RadioGroup({
       value={{ value: currentValue, onChange: handleChange, disabled, name, isError }}
     >
       <div
+        ref={ref}
         id={id}
         role="radiogroup"
         aria-invalid={ariaInvalid}
@@ -147,4 +155,4 @@ export function RadioGroup({
       </div>
     </RadioGroupContext.Provider>
   )
-}
+})

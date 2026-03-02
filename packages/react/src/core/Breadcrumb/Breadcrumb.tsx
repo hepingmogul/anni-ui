@@ -1,17 +1,16 @@
+import { forwardRef } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { cn } from '../utils/cn'
 import type { BreadcrumbProps } from './Breadcrumb.types'
 
-export function Breadcrumb({
-  items,
-  separator,
-  className,
-  ...props
-}: BreadcrumbProps) {
+export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(function Breadcrumb(
+  { items, separator, className, ...props },
+  ref,
+) {
   const defaultSeparator = <ChevronRight size={14} className="text-neutral-400" />
 
   return (
-    <nav aria-label="breadcrumb" className={cn('flex items-center', className)} {...props}>
+    <nav ref={ref} aria-label="breadcrumb" className={cn('flex items-center', className)} {...props}>
       <ol className="flex items-center gap-1">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
@@ -48,4 +47,4 @@ export function Breadcrumb({
       </ol>
     </nav>
   )
-}
+})

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { SliderProps } from './Slider.types'
 
@@ -133,22 +133,25 @@ function Thumb({ value, min, max, step, disabled, showTooltip, isError, onDrag, 
   )
 }
 
-export function Slider({
-  min = 0,
-  max = 100,
-  step = 1,
-  value,
-  defaultValue,
-  onChange,
-  range = false,
-  showTooltip = true,
-  marks,
-  disabled = false,
-  className,
-  id,
-  'aria-invalid': ariaInvalid,
-  'aria-describedby': ariaDescribedby,
-}: SliderProps) {
+export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
+  {
+    min = 0,
+    max = 100,
+    step = 1,
+    value,
+    defaultValue,
+    onChange,
+    range = false,
+    showTooltip = true,
+    marks,
+    disabled = false,
+    className,
+    id,
+    'aria-invalid': ariaInvalid,
+    'aria-describedby': ariaDescribedby,
+  },
+  ref,
+) {
   const isControlled = value !== undefined
   const getDefault = (): number | [number, number] => {
     if (defaultValue !== undefined) return defaultValue
@@ -208,6 +211,7 @@ export function Slider({
 
   return (
     <div
+      ref={ref}
       id={id}
       className={cn('relative w-full', marks ? 'pb-6' : '', className)}
       aria-invalid={ariaInvalid}
@@ -296,4 +300,4 @@ export function Slider({
       )}
     </div>
   )
-}
+})

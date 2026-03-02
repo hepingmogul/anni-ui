@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 export type SwitchSize = 'sm' | 'md' | 'lg'
 
@@ -15,4 +15,5 @@ export interface SwitchProps {
   id?: string
   'aria-invalid'?: boolean | 'true' | 'false' | 'grammar' | 'spelling'
   'aria-describedby'?: string
+  ref?: Ref<HTMLButtonElement>
 }

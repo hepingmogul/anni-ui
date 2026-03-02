@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { InputProps } from './Input.types'
 
@@ -13,15 +14,10 @@ const addonSizeClasses = {
   lg: 'px-4 text-base',
 }
 
-export function Input({
-  size = 'md',
-  prefix,
-  suffix,
-  disabled,
-  className,
-  id,
-  ...props
-}: InputProps) {
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { size = 'md', prefix, suffix, disabled, className, id, ...props },
+  ref,
+) {
   return (
     <div
       className={cn(
@@ -42,6 +38,7 @@ export function Input({
         </span>
       )}
       <input
+        ref={ref}
         id={id}
         disabled={disabled}
         className={cn(
@@ -66,4 +63,4 @@ export function Input({
       )}
     </div>
   )
-}
+})

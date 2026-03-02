@@ -1,18 +1,23 @@
+import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
 import type { CardProps } from './Card.types'
 
-export function Card({
-  title,
-  footer,
-  bordered = true,
-  hoverable = false,
-  bodyClassName,
-  children,
-  className,
-  ...props
-}: CardProps) {
+export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+  {
+    title,
+    footer,
+    bordered = true,
+    hoverable = false,
+    bodyClassName,
+    children,
+    className,
+    ...props
+  },
+  ref,
+) {
   return (
     <div
+      ref={ref}
       className={cn(
         'rounded-lg bg-surface shadow-sm',
         bordered && 'border border-neutral-200',
@@ -38,4 +43,4 @@ export function Card({
       )}
     </div>
   )
-}
+})

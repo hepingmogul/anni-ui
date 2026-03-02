@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 export interface TabItem {
   key: string
@@ -13,4 +13,5 @@ export interface TabsProps {
   defaultActiveKey?: string
   onChange?: (key: string) => void
   className?: string
+  ref?: Ref<HTMLDivElement>
 }

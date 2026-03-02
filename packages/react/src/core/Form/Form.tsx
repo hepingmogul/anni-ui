@@ -1,4 +1,4 @@
-import { createContext, useContext, useId, Children, cloneElement, isValidElement } from 'react'
+import { createContext, useContext, useId, Children, cloneElement, isValidElement, forwardRef } from 'react'
 import { FormProvider, useFormContext } from 'react-hook-form'
 import type { FieldValues } from 'react-hook-form'
 import { cn } from '../utils/cn'
@@ -71,6 +71,7 @@ export function Form<T extends FieldValues = FieldValues>({
   unregister,
   watch,
   clearErrors,
+  ref,
   ...rest
 }: FormProps<T>) {
   const methods = {
@@ -95,6 +96,7 @@ export function Form<T extends FieldValues = FieldValues>({
     <FormProvider {...(methods as unknown as Parameters<typeof FormProvider>[0])}>
       <FormConfigContext.Provider value={{ inline, labelPosition, labelWidth, size, disabled }}>
         <form
+          ref={ref}
           onSubmit={onSubmit}
           className={cn(
             inline ? 'flex flex-wrap items-end gap-4' : 'flex flex-col gap-4',
@@ -111,7 +113,10 @@ export function Form<T extends FieldValues = FieldValues>({
 
 // ─── FormItem ────────────────────────────────────────────────────────────────
 
-export function FormItem({ name, className, children }: FormItemProps) {
+export const FormItem = forwardRef<HTMLDivElement, FormItemProps>(function FormItem(
+  { name, className, children },
+  ref,
+) {
   const uid = useId()
   const id = `field-${uid}`
   const { formState } = useFormContext()
@@ -119,21 +124,25 @@ export function FormItem({ name, className, children }: FormItemProps) {
 
   return (
     <FormItemContext.Provider value={{ id, name, error: error as import('react-hook-form').FieldError | undefined }}>
-      <div className={cn('flex flex-col gap-1', className)}>
+      <div ref={ref} className={cn('flex flex-col gap-1', className)}>
         {children}
       </div>
     </FormItemContext.Provider>
   )
-}
+})
 
 // ─── FormLabel ───────────────────────────────────────────────────────────────
 
-export function FormLabel({ required = false, className, children }: FormLabelProps) {
+export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(function FormLabel(
+  { required = false, className, children },
+  ref,
+) {
   const { id, fieldError } = useFormField()
   const hasError = !!fieldError
 
   return (
     <label
+      ref={ref}
       htmlFor={id}
       className={cn(
         'text-sm font-medium',
@@ -145,7 +154,7 @@ export function FormLabel({ required = false, className, children }: FormLabelPr
       {children}
     </label>
   )
-}
+})
 
 // ─── FormControl ─────────────────────────────────────────────────────────────
 
@@ -164,7 +173,10 @@ export function FormControl({ children }: FormControlProps) {
 
 // ─── FormMessage ─────────────────────────────────────────────────────────────
 
-export function FormMessage({ className, children }: FormMessageProps) {
+export const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(function FormMessage(
+  { className, children },
+  ref,
+) {
   const { fieldError, messageId } = useFormField()
   const message = fieldError?.message ?? children
 
@@ -172,28 +184,33 @@ export function FormMessage({ className, children }: FormMessageProps) {
 
   return (
     <p
+      ref={ref}
       id={messageId}
       className={cn('text-xs', fieldError ? 'text-danger' : 'text-neutral-500', className)}
     >
       {message}
     </p>
   )
-}
+})
 
 // ─── FormDescription ─────────────────────────────────────────────────────────
 
-export function FormDescription({ className, children }: FormDescriptionProps) {
+export const FormDescription = forwardRef<HTMLParagraphElement, FormDescriptionProps>(function FormDescription(
+  { className, children },
+  ref,
+) {
   const { descriptionId } = useFormField()
 
   return (
     <p
+      ref={ref}
       id={descriptionId}
       className={cn('text-xs text-neutral-500', className)}
     >
       {children}
     </p>
   )
-}
+})
 
 // ─── FormInputWords ──────────────────────────────────────────────────────────
 

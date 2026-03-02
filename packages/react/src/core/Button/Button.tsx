@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Loader2 } from 'lucide-react'
 import { cn } from '../utils/cn'
 import type { ButtonProps } from './Button.types'
@@ -25,17 +26,20 @@ const iconSizeMap = {
   lg: 16,
 }
 
-export function Button({
-  variant = 'primary',
-  size = 'md',
-  loading = false,
-  icon,
-  iconPosition = 'left',
-  disabled,
-  children,
-  className,
-  ...props
-}: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    variant = 'primary',
+    size = 'md',
+    loading = false,
+    icon,
+    iconPosition = 'left',
+    disabled,
+    children,
+    className,
+    ...props
+  },
+  ref,
+) {
   const isDisabled = disabled || loading
 
   const IconComponent = icon
@@ -47,6 +51,7 @@ export function Button({
 
   return (
     <button
+      ref={ref}
       disabled={isDisabled}
       className={cn(
         'inline-flex items-center justify-center rounded-md font-medium transition-colors',
@@ -63,4 +68,4 @@ export function Button({
       {iconPosition === 'right' && iconNode}
     </button>
   )
-}
+})
